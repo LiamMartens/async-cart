@@ -1,0 +1,30 @@
+{
+  "name": "async-cart",
+  "type": "module",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:LiamMartens/async-cart.git"
+  },
+  "homepage": "https://github.com/LiamMartens/async-cart",
+  "bugs": {
+    "url": "https://github.com/LiamMartens/async-cart/issues"
+  },
+  "author": {
+    "name": "Liam Martens",
+    "email": "hi@liammartens.com",
+    "url": "https://github.com/LiamMartens"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "p-queue": "^7.3.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
