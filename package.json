@@ -1,6 +1,7 @@
 {
   "name": "async-cart",
   "type": "module",
+  "version": "1.0.0",
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": ["lib"],
