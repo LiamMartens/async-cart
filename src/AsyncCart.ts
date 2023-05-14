@@ -33,7 +33,7 @@ type ProviderConfig<
 }
 
 export default class AsyncCart<CT, BT, LT> extends EventTarget {
-  public static init<CT, BT, LT>(config: ProviderConfig<CT, BT, LT>, id: string | null) {
+  public static init<CT, BT, LT>(config: ProviderConfig<CT, BT, LT>) {
     const cart = new AsyncCart<CT, BT, LT>(config);
     return cart;
   }
