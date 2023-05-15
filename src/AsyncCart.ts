@@ -82,21 +82,23 @@ export default class AsyncCart<CT, BT, LT> extends EventTarget {
       this.dispatchEvent(new CartStatusChangeEvent(this._status));
 
       const queuePromise = this._queue.add<CT>(async () => {
-        return await operation();
+        const updatedCart = await operation();
+        const currentRevisionId = this._cart ? this._config.queries.cartRevisionId(this._cart) : null;
+        // update revision ID if changed
+        if (this._config.queries.cartRevisionId(updatedCart) !== currentRevisionId) {
+          this._previousCartRevisionId = currentRevisionId;
+        }
+        this._cart = updatedCart;
+        return this._cart;
       }, { throwOnTimeout: true });
-      result = await queuePromise;
-      this._cart = result;
-      // update revision ID if changed
-      if (this._config.queries.cartRevisionId(result) !== currentRevisionId) {
-        this._previousCartRevisionId = currentRevisionId;
-      }
+      return await queuePromise;
     } catch (err) {
       this._config.onError(err);
     } finally {
       this._status = CartStatus.READY;
       this.dispatchEvent(new CartStatusChangeEvent(this._status));
     }
-    return result;
+    return this._cart;
   }
 
   public async fetch(id: string) {
