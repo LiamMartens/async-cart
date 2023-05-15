@@ -100,7 +100,7 @@ export default class AsyncCart<CT, BT, LT> extends EventTarget {
   }
 
   public async fetch(id: string) {
-    this.runCartOperation(async () => {
+    return this.runCartOperation(async () => {
       return await this._config.operations.fetch(id);
     });
   }

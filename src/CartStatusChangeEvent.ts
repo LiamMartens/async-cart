@@ -1,4 +1,5 @@
 import { CartStatus } from './CartStatus.js';
+import { CustomEvent } from './CustomEvent.js';
 
 export type CartStatusChangeEventDetail = {
   status: CartStatus
